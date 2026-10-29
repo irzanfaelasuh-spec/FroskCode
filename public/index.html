@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b0d12"><meta name="description" content="A clean, responsive browser coding workspace.">
+  <title>FroskCode — Web IDE</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div id="splash" class="splash" aria-label="Loading FroskCode">
+    <div class="splash-orbit"><div class="brand-mark">&lt;/&gt;</div></div>
+    <div class="brand-name">Frosk<span>Code</span></div>
+    <div class="loading-track"><i></i></div><p>PREPARING YOUR WORKSPACE</p>
+  </div>
+
+  <main id="auth" class="auth hidden">
+    <div class="auth-glow glow-a"></div><div class="auth-glow glow-b"></div>
+    <section class="auth-card">
+      <div class="mini-logo">&lt;/&gt;</div>
+      <div class="eyebrow">YOUR SPACE TO BUILD</div>
+      <h1>Code without<br><span>limits.</span></h1>
+      <p class="sub">A clean workspace, right in your browser.</p>
+      <div class="tabs"><button class="tab active" data-mode="login">Login</button><button class="tab" data-mode="register">Create account</button></div>
+      <form id="authForm" novalidate>
+        <label for="name">Name</label><input id="name" name="name" autocomplete="username" placeholder="e.g. Frosk" minlength="3" maxlength="20" required>
+        <label for="password">Password</label><div class="password-wrap"><input id="password" name="password" type="password" autocomplete="current-password" placeholder="At least 6 characters" required><button type="button" id="togglePassword" aria-label="Show password">◉</button></div>
+        <div id="error" class="error" role="alert" aria-live="polite"></div>
+        <button id="submitBtn" class="primary" type="submit"><span>Enter workspace</span><b>↗</b></button>
+      </form>
+      <div class="secure-note"><span class="dot"></span> Passwords are stored as salted hashes</div>
+    </section>
+    <div class="auth-foot">FROSKCODE <span>•</span> BUILT FOR EVERY SCREEN</div>
+  </main>
+
+  <section id="welcome" class="welcome hidden">
+    <div class="welcome-card"><div class="welcome-icon">✓</div><div class="eyebrow">AUTHENTICATED</div><h2>Welcome <span id="welcomeName">Developer</span></h2><p>Your workspace is ready.</p><button id="openWorkspace" class="primary">Open workspace <b>→</b></button></div>
+  </section>
+
+  <main id="ide" class="ide hidden">
+    <header class="topbar">
+      <div class="window-dots"><i></i><i></i><i></i></div><div class="top-brand"><span class="brand-chip">&lt;/&gt;</span><b>FroskCode</b><span class="top-sep">/</span><span class="project-name">my-project</span></div>
+      <div class="top-actions"><span class="user-pill" id="userPill">● Developer</span><button id="logout" class="logout">Log out ↗</button></div>
+    </header>
+    <div class="ide-layout">
+      <nav class="activity" aria-label="Workspace navigation"><button class="activity-btn selected" title="Explorer">▤</button><button class="activity-btn" title="Search" id="searchBtn">⌕</button><button class="activity-btn" title="Source control">⑂</button><div class="activity-spacer"></div><button class="activity-btn" title="Settings" id="settingsBtn">⚙</button></nav>
+      <aside class="sidebar" id="sidebar"><div class="side-heading"><span>EXPLORER</span><button id="newFile" title="New file">＋</button></div><div class="project-tree"><div class="tree-root">⌄ <span class="folder-icon">▰</span> MY-PROJECT</div><button class="file-row active" data-file="index.html"><span class="file-icon html">◇</span> index.html</button><button class="file-row" data-file="style.css"><span class="file-icon css">▤</span> style.css</button><button class="file-row" data-file="script.js"><span class="file-icon js">◈</span> script.js</button><button class="file-row" data-file="README.md"><span class="file-icon md">M</span> README.md</button></div><div class="side-bottom"><span class="status-dot"></span> Workspace ready</div></aside>
+      <section class="editor-area">
+        <div class="tabbar"><div class="editor-tab"><span id="activeFileIcon" class="file-icon html">◇</span><span id="activeFileName">index.html</span><span class="unsaved hidden" id="unsaved">●</span><button id="closeTab" title="Close tab">×</button></div><div class="editor-tools"><button id="downloadFile" title="Download current file">↓</button><button id="runCode" title="Run HTML preview">▶ Run</button></div></div>
+        <div class="editor-wrap"><div id="lineNumbers" class="line-numbers">1</div><textarea id="codeEditor" spellcheck="false" aria-label="Code editor" autocapitalize="off" autocomplete="off"></textarea></div>
+        <div class="panel"><div class="panel-tabs"><button class="panel-tab active" data-panel="terminal">TERMINAL</button><button class="panel-tab" data-panel="problems">PROBLEMS</button><button class="panel-tab" data-panel="output">OUTPUT</button><button id="clearPanel" class="clear-panel">Clear</button></div><div id="panelContent" class="panel-content"><span class="terminal-prompt">➜</span> Welcome to FroskCode. Select <b>Run</b> to preview your HTML.</div></div>
+        <footer class="statusbar"><span>⌁ main*</span><span>0 errors</span><span id="cursorStatus">Ln 1, Col 1</span><span id="languageStatus">HTML</span><span class="status-spacer"></span><span>UTF-8</span><span>Spaces: 2</span><span>● Ready</span></footer>
+      </section>
+    </div>
+  </main>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="/app.js"></script>
+</body></html>
